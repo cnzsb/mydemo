@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取元素CSS值</title>
+</head>
+<body>
+	<div id="box" style="width: 200px; height: 50px; background: #ccc;"></div>
+	<script type="text/javascript">
+		// getComputedStyle(元素, 伪元素) 只读，只能获取，不能设置
+		// 其中伪元素可以为null，不能设置为:hover等伪类，可为:after等
+		// 取得的样式只能为基础样式，不能为复合样式
+		// currentStyle用于IE，个别情况下取值与getComputedStyle略有不同
+		var oBox = document.getElementById('box');
+		var oStyle = oBox.currentStyle || window.getComputedStyle(oBox, null);
+		alert(oStyle.width);
+	</script>
+</body>
+</html>
