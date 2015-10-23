@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>isMobile</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    	var device = {
+    		Android : /android/i,
+    		iOS : /(iPhone|iPad|iPod|iOS)/i,
+    		WP : /(Windows Phone|Nokia)/i,
+    		oPhone : /MicroMessenger/i
+    	};
+
+    	var ua = navigator.userAgent;
+    	var result = device.Android.test(ua) || device.iOS.test(ua) || device.WP.test(ua) || device.oPhone.test(ua);
+    	var test = '';
+
+    	test = result ? "It's mobile" : "It's PC";
+        alert(test);
+    </script>
+</body>
+
+</html>
