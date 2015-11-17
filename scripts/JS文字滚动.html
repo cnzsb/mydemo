@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字滚动</title>
+	<style type="text/css">
+	#box{width: 600px; height: 30px; font-size: 14px; line-height: 30px; background: #19dcca; margin: 0 auto; overflow: hidden; position: relative;}
+	ul, li{margin: 0; padding: 0; list-style: none;}
+	ul{position: absolute; height: 30px;}
+	li{display: block; float: left;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function (){
+		var oB = document.getElementById('box'),
+			oU = document.getElementsByTagName('ul')[0],
+			oL = document.getElementsByTagName('li'),
+			sp = -1,
+			tm = null;
+
+		oU.innerHTML += oU.innerHTML;
+		oU.style.width = oL.length * oL[0].offsetWidth + 'px';
+
+		function scroll(){
+			oU.style.left = oU.offsetLeft + sp + 'px';
+			if(oU.offsetLeft < -oU.offsetWidth/2){
+				oU.style.left = 0;
+			}
+		}
+		function timer() {
+			tm = setInterval(scroll, 30);
+		}
+		timer();
+
+		oB.onmouseover = function (){clearInterval(tm);};
+		oB.onmouseout = function (){timer();};
+	};
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li>wenzigundong~~~~~~~~~~!</li>
+			<li>wenzigundong~~~~~~~~~~!</li>
+			<li>wenzigundong~~~~~~~~~~!</li>
+		</ul>
+	</div>
+</body>
+</html>
