@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>colorRandom</title>
+	<style type="text/css">
+	button{display: block; width: 100px; height: 40px; padding: 0; font-size: 16px; background: #19accd; color: #fff; margin: 200px auto; border: none; cursor: pointer;}
+	button:active{box-shadow: 0 0 2px 1px #fff inset;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function () {
+		var bt = document.getElementsByTagName('button')[0],
+			body = document.getElementsByTagName('body')[0];
+		bt.onclick = function () {
+			body.style.backgroundColor = colorRandom();
+		};
+		function colorRandom() {
+			return '#' + Math.random().toString(16).substr(2, 6);
+		}
+	};
+	</script>
+</head>
+<body>
+	<button type="button">Click Me!</button>
+</body>
+</html>
