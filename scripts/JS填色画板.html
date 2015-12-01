@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mondrian</title>
+	<style type="text/css">
+	/*css reset*/
+	body, h1, ul, li{
+		margin: 0; padding: 0;
+	}
+	ul, li{
+		list-style: none;
+	}
+
+	body{
+		background-color: #9C9C9C;
+	}
+	#container{
+		width: 800px;
+		margin: 50px auto;
+		padding: 10px;
+		background-color: #FFFFE0;
+		box-shadow: 0 0 2px 2px #584F4F;
+	}
+	.title{
+		margin-top: 50px;
+		color: #3A3636;
+		font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+		text-shadow: -1px -1px 0 #FFF;
+		text-align: center;
+	}
+
+	/*color*/
+	#color{
+		float: right;
+		padding: 15px;
+	}
+	#color li{
+		display: block;
+		width: 40px;
+		height: 40px;
+		border: 2px solid #584F4F;
+		margin-bottom: 5px;
+	}
+	.red{
+		background-color: red;
+	}
+	.yellow{
+		background-color: yellow;
+	}
+	.blue{
+		background-color: blue;
+	}
+	.white{
+		background-color: white;
+	}
+
+	/*box*/
+	#box{
+		width: 617px;
+		height: 617px;
+		margin: 40px auto;
+		background-color: white;
+		border-top: 1px solid #000;
+		border-left: 1px solid #000;
+		font-size: 0;				/*清除li间隙*/
+	}
+	#box li{
+		display: inline-block;
+		border-right: 8px solid #000;
+		border-bottom: 8px solid #000;
+	}
+	#box li.liR{
+		border-right: 1px solid #000;
+	}
+	#box li.liB{
+		border-bottom: 1px solid #000;		
+	}
+	#box .w1{
+		width: 160px;
+	}
+	#box .w2{
+		width: 240px;
+	}
+	#box .w3{
+		width: 200px;
+	}
+	#box .h1{
+		height: 100px;
+	}
+	#box .h2{
+		height: 280px;
+	}
+	#box .h3{
+		height: 220px;
+	}
+	</style>
+</head>
+<body>
+	<h1 class="title">Pick color and paint in canvas</h1>
+	<div id="container">
+		<ul id="color">
+			<li class="red"></li>
+			<li class="yellow"></li>
+			<li class="blue"></li>
+			<li class="white"></li>
+		</ul>
+		<ul id="box">
+			<li class="w1 h1"></li>
+			<li class="w2 h1"></li>
+			<li class="w3 h1 liR"></li>
+			<li class="w1 h2"></li>
+			<li class="w2 h2"></li>
+			<li class="w3 h2 liR"></li>
+			<li class="w1 h3 liB"></li>
+			<li class="w2 h3 liB"></li>
+			<li class="w3 h3 liR liB"></li>
+		</ul>		
+	</div>
+</body>
+</html>
