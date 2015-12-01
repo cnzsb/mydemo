@@ -20,7 +20,7 @@
 		margin: 50px auto;
 		padding: 10px;
 		background-color: #FFFFE0;
-		box-shadow: 0 0 2px 2px #584F4F;
+		box-shadow: 0 0 5px 5px #584F4F;
 	}
 	.title{
 		margin-top: 50px;
@@ -95,6 +95,61 @@
 		height: 220px;
 	}
 	</style>
+	<script type="text/javascript">
+	window.onload = function() {
+		var oBox = document.getElementById('box'),
+			oLis = box.getElementsByTagName('li');
+		
+		var oColor = document.getElementById('color'),
+			oClrs = oColor.getElementsByTagName('li');
+
+		bgcChange(oLis, oClrs);
+
+	};
+	// 获取鼠标点击颜色
+	/*function clrPick(oCls) {
+		var len = oCls.length;
+		for(var i = 0; i < len; i++){
+			oCls[i].onclick = function() {
+				return this.className;
+			};
+		}
+	}*/
+
+	// 点击元素改变背景颜色
+	function bgcChange(oCls, oColors) {
+		var color = '';
+		for(var i = 0; i < oColors.length; i++){
+			oColors[i].onclick = function() {
+				color = this.className;
+			};
+			for(var j = 0; j < oCls.length; j++){
+				oCls[j].onclick = function() {
+					// console.log(color);
+					this.style.backgroundColor = color;
+				};
+			}			
+		}
+	}
+
+	// 通过class获取对象
+	function getByClass(oCls, oPrt){
+		var oParent = oPrt ? document.getElementById(oPrt) : document,
+			oTags = oParent.getElementsByTagName('*'),
+			cls = [];
+
+		for(var i = 0; i < oTags.length; i++){
+			var newcls = oTags[i].className.split(/\s+/);
+			for(var j = 0; j < newcls.length; j++){
+				if(newcls[j] == oCls){
+					cls.push(oTags[i]);
+				}
+			}
+		}
+
+		return cls;
+	}
+	</script>
 </head>
 <body>
 	<h1 class="title">Pick color and paint in canvas</h1>
