@@ -57,8 +57,8 @@
 
 	/*box*/
 	#box{
-		width: 617px;
-		height: 617px;
+		width: 625px;
+		height: 625px;
 		margin: 40px auto;
 		background-color: white;
 		border-top: 1px solid #000;
@@ -67,6 +67,7 @@
 	}
 	#box li{
 		display: inline-block;
+		float: left;				/*IE6,7*/
 		border-right: 8px solid #000;
 		border-bottom: 8px solid #000;
 	}
@@ -77,29 +78,37 @@
 		border-bottom: 1px solid #000;		
 	}
 	#box .w1{
-		width: 160px;
+		width: 140px;
 	}
 	#box .w2{
-		width: 240px;
+		width: 60px;
 	}
 	#box .w3{
-		width: 200px;
+		width: 280px;
+	}
+	#box .w4{
+		width: 120px;
 	}
 	#box .h1{
-		height: 100px;
+		height: 90px;
 	}
 	#box .h2{
 		height: 280px;
 	}
 	#box .h3{
-		height: 220px;
+		height: 160px;
+	}
+	#box .h4{
+		height: 70px;
 	}
 	</style>
 	<script type="text/javascript">
 	window.onload = function() {
+		// 获取画板的元素
 		var oBox = document.getElementById('box'),
 			oLis = box.getElementsByTagName('li');
 		
+		// 获取取色板颜色
 		var oColor = document.getElementById('color'),
 			oClrs = oColor.getElementsByTagName('li');
 
@@ -128,31 +137,13 @@
 					// console.log(color);
 					this.style.backgroundColor = color;
 				};
-			}			
-		}
-	}
-
-	// 通过class获取对象
-	function getByClass(oCls, oPrt){
-		var oParent = oPrt ? document.getElementById(oPrt) : document,
-			oTags = oParent.getElementsByTagName('*'),
-			cls = [];
-
-		for(var i = 0; i < oTags.length; i++){
-			var newcls = oTags[i].className.split(/\s+/);
-			for(var j = 0; j < newcls.length; j++){
-				if(newcls[j] == oCls){
-					cls.push(oTags[i]);
-				}
 			}
 		}
-
-		return cls;
 	}
 	</script>
 </head>
 <body>
-	<h1 class="title">Pick color and paint in canvas</h1>
+	<h1 class="title">Pick a color and paint the canvas</h1>
 	<div id="container">
 		<ul id="color">
 			<li class="red"></li>
@@ -163,13 +154,20 @@
 		<ul id="box">
 			<li class="w1 h1"></li>
 			<li class="w2 h1"></li>
-			<li class="w3 h1 liR"></li>
+			<li class="w3 h1"></li>
+			<li class="w4 h1 liR"></li>
 			<li class="w1 h2"></li>
 			<li class="w2 h2"></li>
-			<li class="w3 h2 liR"></li>
-			<li class="w1 h3 liB"></li>
-			<li class="w2 h3 liB"></li>
-			<li class="w3 h3 liR liB"></li>
+			<li class="w3 h2"></li>
+			<li class="w4 h2 liR"></li>
+			<li class="w1 h3"></li>
+			<li class="w2 h3"></li>
+			<li class="w3 h3"></li>
+			<li class="w4 h3 liR"></li>
+			<li class="w1 h4 liB"></li>
+			<li class="w2 h4 liB"></li>
+			<li class="w3 h4 liB"></li>
+			<li class="w4 h4 liR liB"></li>
 		</ul>		
 	</div>
 </body>
