@@ -22,7 +22,7 @@ ul, ol {
 /* 设置默认鼠标样式*/
 html {
 	cursor: url(../images/cursor.ico), auto;
-	min-height: 100%;
+	height: 100%;
 }
 /* 重置a标签，设置默认字体*/
 a {
