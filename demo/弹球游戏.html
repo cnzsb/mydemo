@@ -84,7 +84,32 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(function () {
-		
+		var $zone = $('zone'),
+			$ball = $('#ball'),
+			$info = $zone.find('.info'),
+			$life = $zone.find('.status').find('.life'),
+			$power = $zone.find('.status').find('.power'),
+			infos = [
+				'战一局吧，少年~',
+				'小子，有点实力啊~',
+				'你让我对你很有兴趣，来吧继续！',
+				'你成功激怒了我，来追赶我吧',
+				'你是第二个让我感受生命到威胁的人',
+				'少年，撸多伤身，健康生活！'],
+			speed = 2000,
+			timer = null;
+			
+			function bounce() {
+				$ball.animate({
+					'top': '+=500px'
+				}, speed, 'swing', function() {
+					$(this).animate({
+						'top': '-=500px'
+					}, speed, 'swing');
+				});
+			}
+			bounce();
+			timer = setInterval(bounce, speed * 2);
 	});
 	</script>
 </head>
