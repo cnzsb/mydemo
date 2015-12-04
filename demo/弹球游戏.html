@@ -29,13 +29,12 @@
 		width: 100px;
 		height: 100px;
 		background-color: #00A8E7;
-		border-radius: 50px;
+		border-radius: 50%;
 		position: absolute;
 		right: 0;
 		top: 0;
 		margin-right: 200px;
 		cursor: pointer;
-		z-index: 9999;
 	}
 	/*游戏信息*/
 	.info{
@@ -55,6 +54,7 @@
 	}
 	/*ball状态信息*/
 	.status{
+		width: 104px;
 		margin-left: 400px;
 		padding-top: 300px;
 		position: relative;
@@ -73,9 +73,100 @@
 	}
 	.power{
 		background: linear-gradient(to right, #FF9298, #EE4040);
-		background-size: 0% 100%;		
+		background-size: 0% 100%;
 		background-repeat: no-repeat;
 	}
+
+
+	/*Version 2 方法*/
+	#ball{
+		/*初始化静止*/
+		animation: bounce 0s infinite;
+		-webkit-animation: bounce 0s infinite;
+		-moz-animation: bounce 0s infinite;
+		-o-animation: bounce 0s infinite;
+	}
+
+	@keyframes bounce {
+		0%   {top: 0px; animation-timing-function: ease-in;}
+		11%  {width: 100px;}
+		12%  {top: 500px; width: 115px; animation-timing-function: ease-out;}
+		13%  {width: 100px;}
+		25%  {top: 0px; animation-timing-function: ease-in;}
+		36%  {width: 100px;}
+		37%  {top: 500px; width: 115px; animation-timing-function: ease-out;}
+		38%  {width: 100px;}
+		49%  {top: 0px; animation-timing-function: ease-in;}
+		60%  {width: 100px;}
+		61%  {top: 500px; width: 115px; animation-timing-function: ease-out;}
+		62%  {width: 100px;}
+		75%  {top: 0px; animation-timing-function: ease-in;}
+		86%  {width: 100px;}
+		87%  {top: 500px; width: 115px; animation-timing-function: ease-out;}
+		88%  {width: 100px;}
+		100% {top: 0px; animation-timing-function: ease-in;}
+	}
+
+	@-webkit-keyframes bounce {
+		0%   {top: 0px; -webkit-animation-timing-function: ease-in;}
+		11%  {width: 100px;}
+		12%  {top: 500px; width: 115px; -webkit-animation-timing-function: ease-out;}
+		13%  {width: 100px;}
+		25%  {top: 0px; -webkit-animation-timing-function: ease-in;}
+		36%  {width: 100px;}
+		37%  {top: 500px; width: 115px; -webkit-animation-timing-function: ease-out;}
+		38%  {width: 100px;}
+		49%  {top: 0px; -webkit-animation-timing-function: ease-in;}
+		60%  {width: 100px;}
+		61%  {top: 500px; width: 115px; -webkit-animation-timing-function: ease-out;}
+		62%  {width: 100px;}
+		75%  {top: 0px; -webkit-animation-timing-function: ease-in;}
+		86%  {width: 100px;}
+		87%  {top: 500px; width: 115px; -webkit-animation-timing-function: ease-out;}
+		88%  {width: 100px;}
+		100% {top: 0px; -webkit-animation-timing-function: ease-in;}
+	}
+
+	@-moz-keyframes bounce {
+		0%   {top: 0px; -moz-animation-timing-function: ease-in;}
+		11%  {width: 100px;}
+		12%  {top: 500px; width: 115px; -moz-animation-timing-function: ease-out;}
+		13%  {width: 100px;}
+		25%  {top: 0px; -moz-animation-timing-function: ease-in;}
+		36%  {width: 100px;}
+		37%  {top: 500px; width: 115px; -moz-animation-timing-function: ease-out;}
+		38%  {width: 100px;}
+		49%  {top: 0px; -moz-animation-timing-function: ease-in;}
+		60%  {width: 100px;}
+		61%  {top: 500px; width: 115px; -moz-animation-timing-function: ease-out;}
+		62%  {width: 100px;}
+		75%  {top: 0px; -moz-animation-timing-function: ease-in;}
+		86%  {width: 100px;}
+		87%  {top: 500px; width: 115px; -moz-animation-timing-function: ease-out;}
+		88%  {width: 100px;}
+		100% {top: 0px; -moz-animation-timing-function: ease-in;}
+	}
+
+	@-o-keyframes bounce {
+		0%   {top: 0px; -o-animation-timing-function: ease-in;}
+		11%  {width: 100px;}
+		12%  {top: 500px; width: 115px; -o-animation-timing-function: ease-out;}
+		13%  {width: 100px;}
+		25%  {top: 0px; -o-animation-timing-function: ease-in;}
+		36%  {width: 100px;}
+		37%  {top: 500px; width: 115px; -o-animation-timing-function: ease-out;}
+		38%  {width: 100px;}
+		49%  {top: 0px; -o-animation-timing-function: ease-in;}
+		60%  {width: 100px;}
+		61%  {top: 500px; width: 115px; -o-animation-timing-function: ease-out;}
+		62%  {width: 100px;}
+		75%  {top: 0px; -o-animation-timing-function: ease-in;}
+		86%  {width: 100px;}
+		87%  {top: 500px; width: 115px; -o-animation-timing-function: ease-out;}
+		88%  {width: 100px;}
+		100% {top: 0px; -o-animation-timing-function: ease-in;}
+	}
+	/*Version 2 方法结束*/
 
 	/*底部*/
 	#footer{
@@ -117,6 +208,71 @@
 
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript">
+	/*
+		version: 2
+		date: 	2015.12.4
+		info: 	CSS3 animation方法
+	*/
+	$(function () {
+		var $zone = $('#zone'),
+			$ball = $('#ball'),
+			$info = $zone.find('.info'),
+			$start = $('.start'),
+			$wait = $('.wait'),
+			$retry = $('.retry'),
+			$life = $zone.find('.status').find('.life'),
+			$power = $zone.find('.status').find('.power'),
+			start = false,
+			level = -1,
+			infos = [
+				'小子，有点实力啊~',
+				'你让我对你很有兴趣，来吧继续！',
+				'你成功激怒了我，来追赶我吧',
+				'你是第二个让我感受生命受到威胁的人',
+				'找死，感受我的怒火吧！神之弹射~！',
+				'少年，撸多伤身，健康生活！'],
+			speed = 8,
+			timer = null;
+
+		$start.click(function() {
+			$(this).hide();
+			// start = true;
+			bounce();
+		});
+
+		// 页面内容禁止选择
+		$('body').attr('unselectable', 'on')
+    		.css('user-select', 'none')
+    		.on('selectstart', false);
+
+
+    	function bounce() {
+    		console.log(speed);
+    		$wait.hide();
+    		$ball.show()
+    			.css({
+	    			'animation-duration': speed + 's',
+	    			'-webkit-animation-duration': speed + 's',
+	    			'-moz-animation-duration': speed + 's',
+	    			'-o-animation-duration': speed + 's'
+    			}).on('click', function() {
+	    			level++;	    			
+	    			speed--;
+	    			$(this).css({
+		    			'animation-duration': 0 + 's',
+		    			'-webkit-animation-duration': 0 + 's',
+		    			'-moz-animation-duration': 0 + 's',
+		    			'-o-animation-duration': 0 + 's'
+	    			});
+	    			$info.html(infos[level]);
+	    			$wait.fadeIn(2500);
+	    			setTimeout(bounce, 3000);
+    		});
+    	}
+	});
+	</script>
+
+	<!-- <script type="text/javascript">
 	/*
 		version: 1
 		date:	2015.12.4
@@ -225,6 +381,6 @@
 				}
 			}
 	});
-	</script>
+	</script> -->
 </body>
 </html>
