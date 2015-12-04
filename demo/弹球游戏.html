@@ -78,9 +78,9 @@
 	}
 
 
-	/*Version 2 方法*/
+	/* 	Version 2 方法
 	#ball{
-		/*初始化静止*/
+		初始化静止
 		animation: bounce 0s infinite;
 		-webkit-animation: bounce 0s infinite;
 		-moz-animation: bounce 0s infinite;
@@ -166,7 +166,7 @@
 		88%  {width: 100px;}
 		100% {top: 0px; -o-animation-timing-function: ease-in;}
 	}
-	/*Version 2 方法结束*/
+	Version 2 方法结束 */
 
 	/*底部*/
 	#footer{
@@ -209,9 +209,129 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript">
 	/*
+		version: 1
+		date:	2015.12.4
+		info:	jQuery animater()方法
+	*/
+	$(function () {
+		var $zone = $('#zone'),
+			$ball = $('#ball'),
+			$info = $zone.find('.info'),
+			$start = $('.start'),
+			$wait = $('.wait'),
+			$retry = $('.retry'),
+			$life = $zone.find('.status').find('.life'),
+			$power = $zone.find('.status').find('.power'),
+			start = false,
+			level = -1,
+			infos = [
+				'小子，有点实力啊~',
+				'你让我对你很有兴趣，来吧继续！',
+				'你成功激怒了我，来追赶我吧',
+				'你是第二个让我感受生命受到威胁的人',
+				'找死，感受我的怒火吧！神之弹射~！',
+				'少年，撸多伤身，健康生活！'],
+			speed = 1500,
+			timer = null;
+			// console.log($(infos)[level]);
+	
+			$start.click(function () {
+				$(this).hide();
+				$power.css('background-size', '5% 100%');
+				start = true;
+				bounce();
+				$ball.on('click', game);
+			});
+	
+			// 页面内容禁止选择
+			$('body').attr('unselectable', 'on')
+	    		.css('user-select', 'none')
+	    		.on('selectstart', false);
+	
+	
+	    	// 整合运动
+    		function game() {
+    			// 防止静止状态的点击
+    			$ball.off('click');
+
+    			ballStop();
+    			ballStatus();
+    			ballInfo();
+
+    			speed /= 2;
+    			$ball.css('top', '0');
+
+    			// 如果到达第5关，则重置所有数据
+    			if(level > 4){
+    				level = -1;
+    				speed = 1500;
+    				$wait.hide();
+    				$retry.show().click(function () {
+    					location.reload();
+    				});
+    				$ball.off('click');
+    				start = false;
+    			}
+
+    			// 准备下次循环
+    			setTimeout(function () {
+    				bounce();
+	    			setTimeout(function () {
+	    				$ball.on('click', game);
+	    			}, 1000);
+    			}, 3000);
+    		}
+	
+	
+	
+			// 弹球
+			function bounce() {
+				// 防止多次点击造成重复动画
+				if(!$ball.is(':animated') && start) {
+					$wait.hide();
+					$ball.animate({
+						'top': '+=500px'
+					}, speed, 'swing', function() {
+						$(this).animate({
+							'top': '-=500px'
+						}, speed, 'swing', function() {
+							bounce();
+						});
+					});
+				}
+			}
+			// 停止后动作
+			// 球停止动画，且停止计时
+			function ballStop() {
+				$ball.stop().animate({'top':'0'}, 200, 'swing');
+				clearTimeout(timer);
+				level++;
+				// console.log(level);
+			}
+			// 球文字信息提示
+			function ballInfo() {				
+				$info.html(infos[level]);
+				$wait.fadeIn(2500);
+			}
+			// 球状态信息更新
+			function ballStatus() {
+				var status = level * 19 + 10;
+				$life.css('background-size', 100 - status + '% 100%');
+				$power.css('background-size', 20 + status + '% 100%');
+				if(status >= 100) {
+					$life.css('background-size', '0% 100%');
+					$power.css('background-size', '0% 100%');
+				}
+			}
+	});
+	</script>
+
+	<!-- <script type="text/javascript">
+	/*
 		version: 2
 		date: 	2015.12.4
 		info: 	CSS3 animation方法
+		无法解决CSS3的动画停止问题，暂时不使用此方法
 	*/
 	$(function () {
 		var $zone = $('#zone'),
@@ -256,7 +376,7 @@
 	    			'-moz-animation-duration': speed + 's',
 	    			'-o-animation-duration': speed + 's'
     			}).on('click', function() {
-	    			level++;	    			
+	    			level++;
 	    			speed--;
 	    			$(this).css({
 		    			'animation-duration': 0 + 's',
@@ -264,122 +384,12 @@
 		    			'-moz-animation-duration': 0 + 's',
 		    			'-o-animation-duration': 0 + 's'
 	    			});
+    				// $(this).hide();
 	    			$info.html(infos[level]);
 	    			$wait.fadeIn(2500);
 	    			setTimeout(bounce, 3000);
     		});
     	}
-	});
-	</script>
-
-	<!-- <script type="text/javascript">
-	/*
-		version: 1
-		date:	2015.12.4
-		info:	jQuery animater()方法
-	*/
-	$(function () {
-		var $zone = $('#zone'),
-			$ball = $('#ball'),
-			$info = $zone.find('.info'),
-			$start = $('.start'),
-			$wait = $('.wait'),
-			$retry = $('.retry'),
-			$life = $zone.find('.status').find('.life'),
-			$power = $zone.find('.status').find('.power'),
-			start = false,
-			level = -1,
-			infos = [
-				'小子，有点实力啊~',
-				'你让我对你很有兴趣，来吧继续！',
-				'你成功激怒了我，来追赶我吧',
-				'你是第二个让我感受生命受到威胁的人',
-				'找死，感受我的怒火吧！神之弹射~！',
-				'少年，撸多伤身，健康生活！'],
-			speed = 1500,
-			timer = null;
-			// console.log($(infos)[level]);
-	
-			$start.click(function () {
-				$(this).hide();
-				$power.css('background-size', '5% 100%');
-				start = true;
-				bounce();
-				$ball.on('click', game);
-			});
-	
-			// 页面内容禁止选择
-			$('body').attr('unselectable', 'on')
-	    		.css('user-select', 'none')
-	    		.on('selectstart', false);
-	
-	
-	    		// 整合运动
-	    		function game() {
-	    			ballStop();
-	    			ballStatus();
-	    			ballInfo();
-	
-	    			speed /= 2;
-	    			$ball.css('top', '0');
-	
-	    			// 如果到达第5关，则重置所有数据
-	    			if(level > 4){
-	    				level = -1;
-	    				speed = 1500;
-	    				$wait.hide();
-	    				$retry.show().click(function () {
-	    					location.reload();
-	    				});
-	    				$ball.off('click');
-	    				start = false;
-	    			}
-	
-	    			// 准备下次循环
-	    			setTimeout(bounce, 3000);
-	    		}
-	
-	
-	
-			// 弹球
-			function bounce() {
-				// 防止多次点击造成重复动画
-				if(!$ball.is(':animated') && start) {
-					$wait.hide();
-					$ball.animate({
-						'top': '+=500px'
-					}, speed, 'swing', function() {
-						$(this).animate({
-							'top': '-=500px'
-						}, speed, 'swing', function() {
-							bounce();
-						});
-					});
-				}
-			}
-			// 停止后动作
-			// 球停止动画，且停止计时
-			function ballStop() {
-				$ball.stop().animate({'top':'0'}, 200, 'swing');
-				clearTimeout(timer);
-				level++;
-				// console.log(level);
-			}
-			// 球文字信息提示
-			function ballInfo() {				
-				$info.html(infos[level]);
-				$wait.fadeIn(2500);
-			}
-			// 球状态信息更新
-			function ballStatus() {
-				var status = level * 19 + 10;
-				$life.css('background-size', 100 - status + '% 100%');
-				$power.css('background-size', 20 + status + '% 100%');
-				if(status >= 100) {
-					$life.css('background-size', '0% 100%');
-					$power.css('background-size', '0% 100%');
-				}
-			}
 	});
 	</script> -->
 </body>
