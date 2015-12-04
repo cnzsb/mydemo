@@ -261,6 +261,7 @@
     			speed /= 2;
     			$ball.css('top', '0');
 
+    			// 准备下次循环
     			// 如果到达第5关，则重置所有数据
     			if(level > 4){
     				level = -1;
@@ -271,15 +272,15 @@
     				});
     				$ball.off('click');
     				start = false;
-    			}
-
-    			// 准备下次循环
+    				return;
+    			} else {
     			setTimeout(function () {
-    				bounce();
-	    			setTimeout(function () {
-	    				$ball.on('click', game);
-	    			}, 1000);
-    			}, 3000);
+	    				bounce();
+		    			setTimeout(function () {
+		    				$ball.on('click', game);
+		    			}, 1000);
+	    			}, 3000);
+    			}
     		}
 	
 	
