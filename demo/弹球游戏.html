@@ -33,12 +33,23 @@
 		right: 0;
 		top: 0;
 		margin-right: 200px;
+		cursor: pointer;
 	}
 	/*游戏信息*/
 	.info{
 		position: absolute;
 		top: 100px;
 		left: 50px;
+	}
+	.start, .wait, .retry{
+		color: #00A8E7;
+		position: absolute;
+		top: 150px;
+		left: 50px;
+		cursor: pointer;
+	}
+	.wait, .retry{
+		display: none;
 	}
 	/*ball状态信息*/
 	.status{
@@ -60,7 +71,7 @@
 	}
 	.power{
 		background: linear-gradient(to right, #FF9298, #EE4040);
-		background-size: 10% 100%;		
+		background-size: 0% 100%;		
 		background-repeat: no-repeat;
 	}
 
@@ -82,96 +93,6 @@
 		padding: 5px 10px;
 	}
 	</style>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script type="text/javascript">
-	$(function () {
-		var $zone = $('#zone'),
-			$ball = $('#ball'),
-			$info = $zone.find('.info'),
-			$life = $zone.find('.status').find('.life'),
-			$power = $zone.find('.status').find('.power'),
-			level = 0,
-			infos = [
-				'战一局吧，少年~',
-				'小子，有点实力啊~',
-				'你让我对你很有兴趣，来吧继续！',
-				'你成功激怒了我，来追赶我吧',
-				'你是第二个让我感受生命受到威胁的人',
-				'少年，撸多伤身，健康生活！'],
-			speed = 1500,
-			timer = null;
-			// console.log($(infos)[level]);
-						
-			bounce();
-
-			$ball.on('click', game);
-
-			// 弹球
-			function bounce() {
-				$ball.animate({
-					'top': '+=500px'
-				}, speed, 'swing', function() {
-					$(this).animate({
-						'top': '-=500px'
-					}, speed, 'swing');
-				});
-
-				timer = setTimeout(bounce, speed * 2);
-			}
-
-			// 停止后动作
-			// 球停止动画，且停止计时
-			function ballStop() {
-				$ball.stop().animate({'top':'0'}, speed, 'swing');
-				clearTimeout(timer);
-				level++;
-				// console.log(level);
-			}
-			// 球状态信息更新
-			function ballStatus() {
-				var status = level * 20;
-				$life.css('background-size', 100 - status + '% 100%');
-				$power.css('background-size', 10 + status + '% 100%');
-			}
-			// 球信息栏更新
-			function ballInfo() {
-				$info.html(infos[level]);
-			}
-
-			// 整合运动
-			function game() {
-				$ball.off('click');	// 阻止多次点击
-				// $ball.stop(); // 停止所有动画
-
-				// 如果到达第5关，则重置所有数据
-				if(level == 5){
-					level = -1;
-					speed = 1500;
-				}
-				console.log(level);
-				ballStop();
-				// ballStatus();
-				// ballInfo();
-				$info.html(infos[level]);
-				var count = 6,
-					tmer = setInterval(function() {
-					count--;
-					// console.log(count);
-					$info.html(infos[level] + '<br />' + count);
-				}, 1000);
-				setTimeout(function() { 
-					$info.html(infos[level]);
-					clearInterval(tmer);}, 6000);
-				speed -= 280;
-				$ball.css('top', '0');
-
-				// 准备下次循环
-
-				$ball.on('click', game);
-				setTimeout(bounce, 7000);
-			}
-	});
-	</script>
 </head>
 <body>
 	<div id="game">
@@ -180,6 +101,9 @@
 	<div id="zone">
 		<div id="ball"></div>
 		<div class="info">战一局吧，少年~</div>
+		<div class="start">接受挑战</div>
+		<div class="wait">wait...</div>
+		<div class="retry">再战一局？</div>
 		<div class="status">
 			Life<div class="life"></div>
 			Power<div class="power"></div>
@@ -189,5 +113,112 @@
 		<a href="http://www.zhaoshibo.net/mydemo">Home</a>
 		<a href="http://www.zhaoshibo.net">Blog</a>
 	</div>
+
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		var $zone = $('#zone'),
+			$ball = $('#ball'),
+			$info = $zone.find('.info'),
+			$start = $('.start'),
+			$wait = $('.wait'),
+			$retry = $('.retry'),
+			$life = $zone.find('.status').find('.life'),
+			$power = $zone.find('.status').find('.power'),
+			start = false,
+			level = -1,
+			infos = [
+				'小子，有点实力啊~',
+				'你让我对你很有兴趣，来吧继续！',
+				'你成功激怒了我，来追赶我吧',
+				'你是第二个让我感受生命受到威胁的人',
+				'找死，感受我的怒火吧！神之弹射~！',
+				'少年，撸多伤身，健康生活！'],
+			speed = 1500,
+			timer = null;
+			// console.log($(infos)[level]);
+
+			$start.click(function () {
+				$(this).hide();
+				$power.css('background-size', '5% 100%');
+				start = true;
+				bounce();
+				$ball.on('click', game);
+			});
+
+			// 页面内容禁止选择
+			$('body').attr('unselectable', 'on')
+	    		.css('user-select', 'none')
+	    		.on('selectstart', false);
+
+
+    		// 整合运动
+    		function game() {
+    			ballStop();
+    			ballStatus();
+    			ballInfo();
+
+    			speed /= 2;
+    			$ball.css('top', '0');
+
+    			// 如果到达第5关，则重置所有数据
+    			if(level > 4){
+    				level = -1;
+    				speed = 1500;
+    				$wait.hide();
+    				$retry.show().click(function () {
+    					location.reload();
+    				});
+    				$ball.off('click');
+    				start = false;
+    			}
+
+    			// 准备下次循环
+    			setTimeout(bounce, 3000);
+    		}
+
+
+
+			// 弹球
+			function bounce() {
+				// 防止多次点击造成重复动画
+				if(!$ball.is(':animated') && start) {
+					$wait.hide();
+					$ball.animate({
+						'top': '+=500px'
+					}, speed, 'swing', function() {
+						$(this).animate({
+							'top': '-=500px'
+						}, speed, 'swing', function() {
+							bounce();
+						});
+					});
+				}
+			}
+			// 停止后动作
+			// 球停止动画，且停止计时
+			function ballStop() {
+				$ball.stop().animate({'top':'0'}, 200, 'swing');
+				clearTimeout(timer);
+				level++;
+				// console.log(level);
+			}
+			// 球文字信息提示
+			function ballInfo() {				
+				$info.html(infos[level]);
+				$wait.fadeIn(2500);
+			}
+			// 球状态信息更新
+			function ballStatus() {
+				var status = level * 19 + 10;
+				$life.css('background-size', 100 - status + '% 100%');
+				$power.css('background-size', 20 + status + '% 100%');
+				if(status >= 100) {
+					$life.css('background-size', '0% 100%');
+					$power.css('background-size', '0% 100%');
+				}
+			}
+	});
+	</script>
 </body>
 </html>
