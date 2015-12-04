@@ -34,6 +34,7 @@
 		top: 0;
 		margin-right: 200px;
 		cursor: pointer;
+		z-index: 9999;
 	}
 	/*游戏信息*/
 	.info{
@@ -75,7 +76,6 @@
 		background-repeat: no-repeat;
 	}
 
-
 	/*底部*/
 	#footer{
 		background-color: #00A8E7;
@@ -116,6 +116,11 @@
 
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript">
+	/*
+		version: 1
+		date:	2015.12.4
+		info:	jQuery animater()方法
+	*/
 	$(function () {
 		var $zone = $('#zone'),
 			$ball = $('#ball'),
@@ -137,7 +142,7 @@
 			speed = 1500,
 			timer = null;
 			// console.log($(infos)[level]);
-
+	
 			$start.click(function () {
 				$(this).hide();
 				$power.css('background-size', '5% 100%');
@@ -145,40 +150,40 @@
 				bounce();
 				$ball.on('click', game);
 			});
-
+	
 			// 页面内容禁止选择
 			$('body').attr('unselectable', 'on')
 	    		.css('user-select', 'none')
 	    		.on('selectstart', false);
-
-
-    		// 整合运动
-    		function game() {
-    			ballStop();
-    			ballStatus();
-    			ballInfo();
-
-    			speed /= 2;
-    			$ball.css('top', '0');
-
-    			// 如果到达第5关，则重置所有数据
-    			if(level > 4){
-    				level = -1;
-    				speed = 1500;
-    				$wait.hide();
-    				$retry.show().click(function () {
-    					location.reload();
-    				});
-    				$ball.off('click');
-    				start = false;
-    			}
-
-    			// 准备下次循环
-    			setTimeout(bounce, 3000);
-    		}
-
-
-
+	
+	
+	    		// 整合运动
+	    		function game() {
+	    			ballStop();
+	    			ballStatus();
+	    			ballInfo();
+	
+	    			speed /= 2;
+	    			$ball.css('top', '0');
+	
+	    			// 如果到达第5关，则重置所有数据
+	    			if(level > 4){
+	    				level = -1;
+	    				speed = 1500;
+	    				$wait.hide();
+	    				$retry.show().click(function () {
+	    					location.reload();
+	    				});
+	    				$ball.off('click');
+	    				start = false;
+	    			}
+	
+	    			// 准备下次循环
+	    			setTimeout(bounce, 3000);
+	    		}
+	
+	
+	
 			// 弹球
 			function bounce() {
 				// 防止多次点击造成重复动画
