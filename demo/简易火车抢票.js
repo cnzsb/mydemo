@@ -7,7 +7,7 @@ var search = document.querySelector('#query_ticket'),
 function ticket(train, i) {
 	// 1商务座 2特等座 3一等座 4二等座 5高级软卧 6软卧 7硬卧 8软座 9硬座 10无座
 	// 此处为硬座, 可根据需求更改，用"||"表现不佳，故更改为单类型席别抢票
-	return train[i].querySelectorAll('td')[10];
+	return train[i].querySelectorAll('td')[9];
 }
 
 (function timer(){
