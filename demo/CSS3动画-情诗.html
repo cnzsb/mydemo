@@ -9,10 +9,18 @@
 	body{
 		width: 980px;
 		margin: 0 auto;
+		font-size: 28px;
 		position: relative;
-		animation: bg 30s linear;
+		animation: bg 25s linear;
 		animation-fill-mode: forwards;
 	}
+
+	#header a{
+		font-size: 20px;
+		color: #FFF;
+		font-weight: bold;
+	}
+
 	.container1{
 		position: relative;
 		top: 100px;
@@ -27,9 +35,8 @@
 		top: 100px;
 		left: 0;
 		padding-left: 400px;
-		animation: moveB 4s 19s ease-in;
+		animation: moveB 2s 19s ease-in;
 		animation-fill-mode: forwards;
-		font-size: 28px;
 	}
 	.content{
 		visibility: hidden;
@@ -43,18 +50,18 @@
 	}
 	.p2{
 		top: 0px;
-		right: 100px;
+		left: 880px;
 		animation: move2 3s 5s ease-in-out;
 		animation-fill-mode: forwards;
 	}
 	.p3{
-		top: -50px;
+		top: -80px;
 		left: 380px;
 		animation: move3 3s 9s ease-out;
 		animation-fill-mode: forwards;
 	}
 	.p4{
-		top: 90px;
+		top: 120px;
 		animation: move4 3s 13s linear;
 		animation-fill-mode: forwards;
 	}
@@ -70,9 +77,9 @@
 		100% {top: 0; left: 420px; color: #FC7102; visibility: visible;}
 	}
 	@keyframes move2 {
-		0%   {top: 0px; right: 100px; visibility: visible;}
-		80%  {top: 25px; right: 600px; visibility: visible;}
-		100% {top: 30px; right: 452px; color: #23CF6C; visibility: visible;}
+		0%   {top: 0px; left: 880px; visibility: visible;}
+		80%  {top: 25px; left: 380px; visibility: visible;}
+		100% {top: 40px; left: 420px; color: #23CF6C; visibility: visible;}
 	}
 	@keyframes move3 {
 		0%   {top: -50px; left: 380px; visibility: visible;}
@@ -80,11 +87,11 @@
 		30%  {top: -10px; left: 410px;}
 		50%  {top: 10px; left: 350px;}
 		70%  {top: 30px; left: 410px;}
-		85%  {top: 45px; left: 330px;}
-		100% {top: 60px; left: 420px; color: #FA5D3F; visibility: visible;}
+		85%  {top: 50px; left: 330px;}
+		100% {top: 80px; left: 420px; color: #FA5D3F; visibility: visible;}
 	}
 	@keyframes move4 {
-		0%   {top: 90px; left: 420px; transform: scale(0.1, 0.1); visibility: visible;}
+		0%   {top: 120px; left: 420px; transform: scale(0.1, 0.1); visibility: visible;}
 		12%  {transform: rotate(80deg);}
 		14%  {transform: rotate(160deg);}
 		16%  {transform: rotate(240deg);}
@@ -106,15 +113,15 @@
 		84%  {transform: scale(1,7, 1,7);}
 		90%  {transform: scale(0.7, 0.7);}
 		96%  {transform: scale(1,7, 1,7);}
-		100% {top: 90px; left: 420px; color: #2B88FC; transform: scale(1, 1); visibility: visible;}
+		100% {top: 120px; left: 420px; color: #2B88FC; transform: scale(1, 1); visibility: visible;}
 	}
 	@keyframes moveA{
 		0%   {top: 100px; left: 0px; opacity: 1; transform-origin: 50% 50%; transform: rotateY(3600deg);}
 		100% {top: 100px; left: 100px; opacity: 0;}
 	}
 	@keyframes moveB{
-		0%   {top: 100px; left: 0px; visibility: visible; opacity: 0; transform: rotateY(-1800deg);}
-		100% {top: 100px; left: 0px; color: #FFF; opacity: 1;}
+		0%   {visibility: visible; transform-origin: 50% 50%; transform: rotateY(-1800deg);}
+		100% {visibility: visible; color: #FFF; opacity: 1;}
 	}
 	@keyframes bg{
 		0%   {background-color: #FFF;}
@@ -126,18 +133,26 @@
 	<script type="text/javascript">
 	$(function () {
 		setTimeout(function () {
-			$('.container2').fadeOut()
-				.html('螃蟹在剥我的壳<br />笔记本在写我<br />漫天的我落在枫叶上雪花上<br />而你在想我')
-				.css({
-					'font-size': '28px',
-					'color': '#FFF'
+			$('.container1').hide();
+			$('.container2').css({
+					'color': '#FFF',
+					'visibility': 'visible',
+					'opacity': '1'
 					})
-				.fadeIn();
-		}, 25000);
+					.slideUp(2000, function () {
+						$(this).css('color','#19CAAD')
+							.html('螃蟹在剥我的壳<br />笔记本在写我<br />漫天的我落在枫叶上雪花上<br />而你在想我')
+							.slideDown(2000);
+					});
+		}, 23000);
 	});
 	</script>
 </head>
 <body>
+	<div id="header">
+		<a href="http://www.zhaoshibo.net/mydemo">Home</a>
+		<a href="http://www.zhaoshibo.net">Blog</a>
+	</div>
 	<div class="container1">
 		<div class="content p1">螃蟹在剥我的壳</div>
 		<div class="content p2">笔记本在写我</div>
