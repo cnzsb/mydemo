@@ -10,32 +10,52 @@
 		width: 980px;
 		margin: 0 auto;
 		position: relative;
+		animation: bg 30s linear;
+		animation-fill-mode: forwards;
 	}
-	.container{
-		margin-top: 100px;
+	.container1{
+		position: relative;
+		top: 100px;
+		left: 0;
+		animation: moveA 2s 18s ease-out;
+		animation-fill-mode: forwards;
+	}
+	.container2{
+		position: relative;
+		visibility: hidden;
+		opacity: 0;
+		top: 100px;
+		left: 0;
+		padding-left: 400px;
+		animation: moveB 4s 19s ease-in;
+		animation-fill-mode: forwards;
+		font-size: 28px;
 	}
 	.content{
 		visibility: hidden;
 		position: absolute;
 	}
 	.p1{
-		animation: move1 5s ease;
+		top: 0;
+		left: 200px;
+		animation: move1 3s 1s ease;
 		animation-fill-mode: forwards;
 	}
 	.p2{
-		top: 30px;
-		right: 0;
-		animation: move2 5s 6s ease;
+		top: 0px;
+		right: 100px;
+		animation: move2 3s 5s ease-in-out;
 		animation-fill-mode: forwards;
 	}
 	.p3{
-		top: 60px;
-		animation: move3 5s 12s ease;
+		top: -50px;
+		left: 380px;
+		animation: move3 3s 9s ease-out;
 		animation-fill-mode: forwards;
 	}
 	.p4{
 		top: 90px;
-		animation: move4 5s 18s ease;
+		animation: move4 3s 13s linear;
 		animation-fill-mode: forwards;
 	}
 	
@@ -47,24 +67,88 @@
 		36%  {transform: scale(1, 1);}
 		70%  {transform: rotate(-25deg); transform-origin: 0 -20px;}
 		75%  {top: 0; left: 600px; transform: rotate(0);}
-		100% {top: 0; left: 420px; visibility: visible;}
+		100% {top: 0; left: 420px; color: #FC7102; visibility: visible;}
 	}
 	@keyframes move2 {
-		0%   {top: 30px; right: 0; visibility: visible;}
-		100% {top: 30px; right: 452px; visibility: visible;}
+		0%   {top: 0px; right: 100px; visibility: visible;}
+		80%  {top: 25px; right: 600px; visibility: visible;}
+		100% {top: 30px; right: 452px; color: #23CF6C; visibility: visible;}
+	}
+	@keyframes move3 {
+		0%   {top: -50px; left: 380px; visibility: visible;}
+		10%  {top: -30px; left: 350px;}
+		30%  {top: -10px; left: 410px;}
+		50%  {top: 10px; left: 350px;}
+		70%  {top: 30px; left: 410px;}
+		85%  {top: 45px; left: 330px;}
+		100% {top: 60px; left: 420px; color: #FA5D3F; visibility: visible;}
+	}
+	@keyframes move4 {
+		0%   {top: 90px; left: 420px; transform: scale(0.1, 0.1); visibility: visible;}
+		12%  {transform: rotate(80deg);}
+		14%  {transform: rotate(160deg);}
+		16%  {transform: rotate(240deg);}
+		18%  {transform: rotate(320deg);}
+		20%  {transform: rotate(360deg);}
+		30%  {transform: scale(0.6, 0.6);}
+		50%  {transform: scale(0.9, 0.9);}
+		52%  {transform: rotate(-80deg);}
+		54%  {transform: rotate(-160deg);}
+		56%  {transform: rotate(-240deg);}
+		58%  {transform: rotate(-320deg);}
+		60%  {transform: rotate(-360deg);}
+		70%  {transform: rotate(80deg); transform: scale(1.2, 1.2);}
+		72%  {transform: rotate(160deg);}
+		74%  {transform: rotate(240deg);}
+		76%  {transform: rotate(320deg);}
+		78%  {transform: rotate(360deg); transform: scale(2, 2);}
+		80%  {transform: scale(0.7, 0.7);}
+		84%  {transform: scale(1,7, 1,7);}
+		90%  {transform: scale(0.7, 0.7);}
+		96%  {transform: scale(1,7, 1,7);}
+		100% {top: 90px; left: 420px; color: #2B88FC; transform: scale(1, 1); visibility: visible;}
+	}
+	@keyframes moveA{
+		0%   {top: 100px; left: 0px; opacity: 1; transform-origin: 50% 50%; transform: rotateY(3600deg);}
+		100% {top: 100px; left: 100px; opacity: 0;}
+	}
+	@keyframes moveB{
+		0%   {top: 100px; left: 0px; visibility: visible; opacity: 0; transform: rotateY(-1800deg);}
+		100% {top: 100px; left: 0px; color: #FFF; opacity: 1;}
+	}
+	@keyframes bg{
+		0%   {background-color: #FFF;}
+		50%  {background-color: #19CAAD;}
+		100% {background-color: #F9636F;}
 	}
 	</style>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		setTimeout(function () {
+			$('.container2').fadeOut()
+				.html('螃蟹在剥我的壳<br />笔记本在写我<br />漫天的我落在枫叶上雪花上<br />而你在想我')
+				.css({
+					'font-size': '28px',
+					'color': '#FFF'
+					})
+				.fadeIn();
+		}, 25000);
+	});
+	</script>
 </head>
 <body>
-	<!-- 螃蟹在剥我的壳 → 我在剥螃蟹的壳
-	笔记本在写我 → 我在写笔记本
-	漫天的我落在枫叶上雪花上 → 漫天的雪花枫叶落在我身上
-	你在想我 → 我在想你 -->
-	<div class="container">
+	<div class="container1">
 		<div class="content p1">螃蟹在剥我的壳</div>
 		<div class="content p2">笔记本在写我</div>
 		<div class="content p3">漫天的我落在枫叶上雪花上</div>
 		<div class="content p4">而你在想我</div>
+	</div>
+	<div class="container2">
+		我在剥螃蟹的壳<br />
+		我在写笔记本<br />
+		漫天的枫叶雪花落在我身上<br />
+		而我在想你
 	</div>
 </body>
 </html>
