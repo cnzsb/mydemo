@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animations</title>
+	<link rel="shortcut icon" href="../images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<style type="text/css">
+	body{
+		width: 980px;
+		margin: 0 auto;
+		position: relative;
+	}
+	.container{
+		margin-top: 100px;
+	}
+	.content{
+		visibility: hidden;
+		position: absolute;
+	}
+	.p1{
+		animation: move1 5s ease;
+		animation-fill-mode: forwards;
+	}
+	.p2{
+		top: 30px;
+		right: 0;
+		animation: move2 5s 6s ease;
+		animation-fill-mode: forwards;
+	}
+	.p3{
+		top: 60px;
+		animation: move3 5s 12s ease;
+		animation-fill-mode: forwards;
+	}
+	.p4{
+		top: 90px;
+		animation: move4 5s 18s ease;
+		animation-fill-mode: forwards;
+	}
+	
+	@keyframes move1 {
+		0%	 {top: 0; left: 0; visibility: visible;}
+		1%   {transform: rotate(20deg);}
+		8%	 {transform: rotate(0);}
+		35%  {transform: scale(1.2, 1.2);}
+		36%  {transform: scale(1, 1);}
+		70%  {transform: rotate(-25deg); transform-origin: 0 -20px;}
+		75%  {top: 0; left: 600px; transform: rotate(0);}
+		100% {top: 0; left: 420px; visibility: visible;}
+	}
+	@keyframes move2 {
+		0%   {top: 30px; right: 0; visibility: visible;}
+		100% {top: 30px; right: 452px; visibility: visible;}
+	}
+	</style>
+</head>
+<body>
+	<!-- 螃蟹在剥我的壳 → 我在剥螃蟹的壳
+	笔记本在写我 → 我在写笔记本
+	漫天的我落在枫叶上雪花上 → 漫天的雪花枫叶落在我身上
+	你在想我 → 我在想你 -->
+	<div class="container">
+		<div class="content p1">螃蟹在剥我的壳</div>
+		<div class="content p2">笔记本在写我</div>
+		<div class="content p3">漫天的我落在枫叶上雪花上</div>
+		<div class="content p4">而你在想我</div>
+	</div>
+</body>
+</html>
