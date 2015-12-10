@@ -17,10 +17,18 @@
 		-webkit-animation-fill-mode: forwards;
 	}
 
+	#header{
+		width: 100%;
+		height: 50px;
+		position: fixed;
+		padding-top: 10px;
+		z-index: 1000px;
+	}
 	#header a{
 		font-size: 20px;
 		color: #FFF;
 		font-weight: bold;
+		padding-left: 20px;
 	}
 
 	.container1{
@@ -33,7 +41,7 @@
 		-webkit-animation-fill-mode: forwards;
 	}
 	.container2{
-		position: relative;
+		position: fixed;
 		visibility: hidden;
 		opacity: 0;
 		top: 100px;
@@ -104,12 +112,12 @@
 	@keyframes move2 {
 		0%   {top: 0px; left: 750px; visibility: visible;}
 		80%  {top: 25px; left: 380px; visibility: visible;}
-		100% {top: 40px; left: 420px; color: #23CF6C; visibility: visible;}
+		100% {top: 40px; left: 420px; color: #2C2C2E; visibility: visible;}
 	}
 	@-webkit-keyframes move2 {
 		0%   {top: 0px; left: 750px; visibility: visible;}
 		80%  {top: 25px; left: 380px; visibility: visible;}
-		100% {top: 40px; left: 420px; color: #23CF6C; visibility: visible;}
+		100% {top: 40px; left: 420px; color: #2C2C2E; visibility: visible;}
 	}
 
 	@keyframes move3 {
@@ -187,12 +195,12 @@
 	}
 
 	@keyframes moveA{
-		0%   {top: 100px; left: 0px; opacity: 1; transform-origin: 50% 50%; transform: rotateY(3600deg);}
-		100% {top: 100px; left: 100px; opacity: 0;}
+		0%   {top: 100px; left: 0px; opacity: 1; transform-origin: 50% 50%; transform: rotateY(1800deg);}
+		100% {top: 100px; left: 100px; opacity: 0; visibility: hidden;}
 	}
 	@-webkit-keyframes moveA{
-		0%   {top: 100px; left: 0px; opacity: 1; transform-origin: 50% 50%; -webkit-transform: rotateY(3600deg);}
-		100% {top: 100px; left: 100px; opacity: 0;}
+		0%   {opacity: 1; transform-origin: 50% 50%; -webkit-transform: rotateY(1800deg);}
+		100% {opacity: 0; visibility: hidden;}
 	}
 
 	@keyframes moveB{
@@ -226,7 +234,7 @@
 					'opacity': '1'
 					})
 					.slideUp(2000, function () {
-						$(this).css('color','#19CAAD')
+						$(this).css('font-weight','bold')
 							.html('螃蟹在剥我的壳<br />笔记本在写我<br />漫天的我落在枫叶上雪花上<br />而你在想我')
 							.slideDown(2000);
 					});
