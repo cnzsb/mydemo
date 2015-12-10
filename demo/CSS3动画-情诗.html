@@ -40,12 +40,12 @@
 		-webkit-animation-fill-mode: forwards;
 	}
 	.container2{
-		position: absolute;
+		position: relative;
 		visibility: hidden;
 		opacity: 0;
 		top: 100px;
-		left: 420px;
-		padding-left: 420px;
+		left: 0;
+		padding-left: 400px;
 		animation: moveB 2s 19s ease-in;
 		-webkit-animation: moveB 2s 19s ease-in;
 		animation-fill-mode: forwards;
@@ -81,6 +81,7 @@
 	}
 	.p4{
 		top: 120px;
+		left: 400px;
 		animation: move4 3s 13s linear;
 		-webkit-animation: move4 3s 13s linear;
 		animation-fill-mode: forwards;
@@ -95,7 +96,7 @@
 		36%  {transform: scale(1, 1);}
 		70%  {transform: rotate(-25deg); transform-origin: 0 -20px;}
 		75%  {top: 0; left: 600px; transform: rotate(0);}
-		100% {top: 0; left: 420px; color: #FC7102; visibility: visible;}
+		100% {top: 0; left: 400px; color: #FC7102; visibility: visible;}
 	}
 	@-webkit-keyframes move1 {
 		0%	 {top: 0; left: 0; visibility: visible;}
@@ -105,18 +106,18 @@
 		36%  {-webkit-transform: scale(1, 1);}
 		70%  {-webkit-transform: rotate(-25deg); transform-origin: 0 -20px;}
 		75%  {top: 0; left: 600px; transform: rotate(0);}
-		100% {top: 0; left: 420px; color: #FC7102; visibility: visible;}
+		100% {top: 0; left: 400px; color: #FC7102; visibility: visible;}
 	}
 
 	@keyframes move2 {
 		0%   {top: 0px; left: 750px; visibility: visible;}
 		80%  {top: 25px; left: 380px; visibility: visible;}
-		100% {top: 40px; left: 420px; color: #2C2C2E; visibility: visible;}
+		100% {top: 40px; left: 400px; color: #2C2C2E; visibility: visible;}
 	}
 	@-webkit-keyframes move2 {
 		0%   {top: 0px; left: 750px; visibility: visible;}
 		80%  {top: 25px; left: 380px; visibility: visible;}
-		100% {top: 40px; left: 420px; color: #2C2C2E; visibility: visible;}
+		100% {top: 40px; left: 400px; color: #2C2C2E; visibility: visible;}
 	}
 
 	@keyframes move3 {
@@ -126,7 +127,7 @@
 		50%  {top: 10px; left: 350px;}
 		70%  {top: 30px; left: 410px;}
 		85%  {top: 50px; left: 330px;}
-		100% {top: 80px; left: 420px; color: #FA5D3F; visibility: visible;}
+		100% {top: 80px; left: 400px; color: #FA5D3F; visibility: visible;}
 	}
 	@-webkit-keyframes move3 {
 		0%   {top: -50px; left: 380px; visibility: visible;}
@@ -135,11 +136,11 @@
 		50%  {top: 10px; left: 350px;}
 		70%  {top: 30px; left: 410px;}
 		85%  {top: 50px; left: 330px;}
-		100% {top: 80px; left: 420px; color: #FA5D3F; visibility: visible;}
+		100% {top: 80px; left: 400px; color: #FA5D3F; visibility: visible;}
 	}
 
 	@keyframes move4 {
-		0%   {top: 120px; left: 420px; transform: scale(0.1, 0.1); visibility: visible;}
+		0%   {transform: scale(0.1, 0.1); visibility: visible;}
 		12%  {transform: rotate(80deg);}
 		14%  {transform: rotate(160deg);}
 		16%  {transform: rotate(240deg);}
@@ -163,10 +164,10 @@
 		84%  {transform: scale(1,7, 1,7);}
 		90%  {transform: scale(0.7, 0.7);}
 		96%  {transform: scale(1,7, 1,7);}
-		100% {top: 120px; left: 420px; color: #2B88FC; transform: scale(1, 1); visibility: visible;}
+		100% {color: #2B88FC; transform: scale(1, 1); visibility: visible;}
 	}
 	@-webkit-keyframes move4 {
-		0%   {top: 120px; left: 420px; transform: scale(0.1, 0.1); visibility: visible;}
+		0%   {transform: scale(0.1, 0.1); visibility: visible;}
 		12%  {-webkit-transform: rotate(80deg);}
 		14%  {-webkit-transform: rotate(160deg);}
 		16%  {-webkit-transform: rotate(240deg);}
@@ -190,7 +191,7 @@
 		84%  {-webkit-transform: scale(1,7, 1,7);}
 		90%  {-webkit-transform: scale(0.7, 0.7);}
 		96%  {-webkit-transform: scale(1,7, 1,7);}
-		100% {top: 120px; left: 420px; color: #2B88FC; -webkit-transform: scale(1, 1); visibility: visible;}
+		100% {color: #2B88FC; -webkit-transform: scale(1, 1); visibility: visible;}
 	}
 
 	@keyframes moveA{
@@ -228,15 +229,15 @@
 		setTimeout(function () {
 			$('.container1').hide();
 			$('.container2').css({
-					'color': '#FFF',
-					'visibility': 'visible',
-					'opacity': '1'
-					})
-					.slideUp(2000, function () {
-						$(this).css('font-weight','bold')
-							.html('螃蟹在剥我的壳<br />笔记本在写我<br />漫天的我落在枫叶上雪花上<br />而你在想我')
-							.slideDown(2000);
-					});
+								'animation-name': 'none',
+								'color': '#FFF',
+								'visibility': 'visible',
+								'opacity': '1'
+								})
+							.slideUp(2000, function () {
+									$(this).html('螃蟹在剥我的壳<br />笔记本在写我<br />漫天的我落在枫叶上雪花上<br />而你在想我')
+										.slideDown(2000);
+								});
 		}, 23000);
 	});
 	</script>
