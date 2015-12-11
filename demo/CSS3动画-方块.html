@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3动画-方块</title>
+	<link rel="shortcut icon" href="../images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<style type="text/css">
+	body{
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.box{
+		width: 80px;
+		height: 80px;
+		position: relative;
+		display: inline-block;
+	}
+	.box:hover{
+		z-index: 1;
+		box-shadow: 0 0 2px 3px #FFF;
+		-webkit-transform: translate(2px, -2px);
+		transform: translate(2px, -2px);
+	}
+	.sty1{
+		background-color: #FB6060;
+	}
+	.sty2{
+		background-color: #FFE96B;
+	}
+	.sty3{
+		background-color: #1AD3FF;
+	}
+	.sty4{
+		background-color: #BB14FA;
+	}
+	.sty5{
+		background-color: #30D7A7;
+	}
+
+	.dangle{
+		animation: dangle 5s 1s ease-in;
+	}
+	.jump{
+		animation: jump 5s 1s ease-out;
+	}
+
+	@keyframes dangle{
+		0%,10% {transform-origin: top left; transform: rotate(45deg);}
+		5%,15% {transform-origin: top left; transform: rotate(15deg);}
+		20% {transform: translateY(120px);}
+		22%	{transform: translateY(80px);}
+		30% {transform: translate(40px, 370px);}
+		32% {transform: translate(40px, 330px);}
+		40% {transform: translate(120px, 550px);}
+		42% {transform: translate(120px, 510px);}
+		50% {transform: translate(200px, 730px);}
+		52% {transform: translate(200px, 690px);}
+		55% {transform: translate(280px, 1200px) rotateY(1800deg);}
+	}
+
+	@keyframes jump{
+		30%  {transform: translateY(-20px) scale(0.5);}
+	}
+	</style>
+</head>
+<body>
+	<div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box dangle"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box jump"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div>
+
+	<script type="text/javascript" src="js/analytics.js"></script>
+</body>
+</html>
