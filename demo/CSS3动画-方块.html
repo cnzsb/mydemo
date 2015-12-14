@@ -15,6 +15,7 @@
 		height: 80px;
 		position: relative;
 		display: inline-block;
+		vertical-align: top;	/* 影响高度变化时的动画效果 */
 	}
 	.box:hover{
 		z-index: 1;
@@ -39,33 +40,171 @@
 	}
 
 	.dangle{
-		animation: dangle 5s 1s ease-in;
+		animation: dangle 5s ease-in;
+		-webkit-animation: dangle 5s ease-in;
 	}
-	.jump{
-		animation: jump 5s 1s ease-out;
+	.diminish{
+		animation: diminish 5s ease-out;
+		-webkit-animation: diminish 5s ease-out;
+	}
+	.largen{
+		animation: largen 5s;
+		-webkit-animation: largen 5s;
+	}
+	.crawl{
+		animation: crawl 5s linear;
+		-webkit-animation: crawl 5s linear;
+	}
+	.stretch{
+		animation: stretch 5s ease-in-out;
+		-webkit-animation: stretch 5s ease-in-out;
 	}
 
 	@keyframes dangle{
 		0%,10% {transform-origin: top left; transform: rotate(45deg);}
 		5%,15% {transform-origin: top left; transform: rotate(15deg);}
-		20% {transform: translateY(120px);}
-		22%	{transform: translateY(80px);}
-		30% {transform: translate(40px, 370px);}
-		32% {transform: translate(40px, 330px);}
-		40% {transform: translate(120px, 550px);}
-		42% {transform: translate(120px, 510px);}
-		50% {transform: translate(200px, 730px);}
-		52% {transform: translate(200px, 690px);}
-		55% {transform: translate(280px, 1200px) rotateY(1800deg);}
+		20%  {transform: translateY(120px);}
+		22%	 {transform: translateY(80px);}
+		30%  {transform: translate(40px, 370px);}
+		32%  {transform: translate(40px, 330px);}
+		40%  {transform: translate(120px, 550px);}
+		42%  {transform: translate(120px, 510px);}
+		50%  {transform: translate(200px, 730px);}
+		52%  {transform: translate(200px, 690px);}
+		55%  {transform: translate(200px, 1200px) rotateY(1800deg);}
+	}
+	@-webkit-keyframes dangle{
+		0%,10% {-webkit-transform-origin: top left; -webkit-transform: rotate(45deg);}
+		5%,15% {-webkit-transform-origin: top left; -webkit-transform: rotate(15deg);}
+		20%  {-webkit-transform: translateY(120px);}
+		22%	 {-webkit-transform: translateY(80px);}
+		30%  {-webkit-transform: translate(40px, 370px);}
+		32%  {-webkit-transform: translate(40px, 330px);}
+		40%  {-webkit-transform: translate(120px, 550px);}
+		42%  {-webkit-transform: translate(120px, 510px);}
+		50%  {-webkit-transform: translate(200px, 730px);}
+		52%  {-webkit-transform: translate(200px, 690px);}
+		55%  {-webkit-transform: translate(200px, 1200px) rotateY(1800deg);}
 	}
 
-	@keyframes jump{
-		30%  {transform: translateY(-20px) scale(0.5);}
+	@keyframes diminish{
+		7%   {transform: scale(0.5);}
+		10%  {transform: translateY(-70px) scale(0.5);}
+		50%  {transform: translateY(2000px) scale(0.5); opacity: 1;}
+		55%  {transform: translateY(-2000px) scale(0.5); opacity: 0;}
+		95%  {transform: translateY(-80px) scale(1); opacity: 1;}
+		100% {transform: translateY(0);}
+	}
+	@-webkit-keyframes diminish{
+		7%   {-webkit-transform: scale(0.5);}
+		10%  {-webkit-transform: translateY(-70px) scale(0.5);}
+		50%  {-webkit-transform: translateY(2000px) scale(0.5); opacity: 1;}
+		55%  {-webkit-transform: translateY(-2000px) scale(0.5); opacity: 0;}
+		95%  {-webkit-transform: translateY(-80px) scale(1); opacity: 1;}
+		100% {-webkit-transform: translateY(0);}
+	}
+
+	@keyframes largen{
+		7%   {transform: scale(1.5); z-index: 1;}    /* firefox下z-index失效 */
+		30%  {transform: scale(1.5) translateY(500px); opacity: 1;}
+		35%  {transform: translateY(500px) scale(0.5, 1); opacity: 0.2;}
+		45%  {transform: translateY(2000px) rotateX(1800deg);}
+	}
+	@-webkit-keyframes largen{
+		7%   {-webkit-transform: scale(1.5); z-index: 1;}    /* firefox下z-index失效 */
+		30%  {-webkit-transform: scale(1.5) translateY(500px); opacity: 1;}
+		35%  {-webkit-transform: translateY(500px) scale(0.5, 1); opacity: 0.2;}
+		45%  {-webkit-transform: translateY(2000px) rotateX(1800deg);}
+	}
+
+	@keyframes crawl{
+		2%,6%,10% {transform: translateY(310px);}
+		4%,8% {transform: translateY(340px);}
+		11%  {transform: translateY(320px);}
+		20%  {height: 80px; transform: translateY(320px);}
+		25%  {height: 40px; transform: translateY(320px);}
+		30%  {height: 80px; transform: translateY(280px);}
+		35%  {height: 40px; transform: translateY(280px);}
+		40%  {height: 80px; transform: translateY(240px);}
+		45%  {height: 40px; transform: translateY(240px);}
+		50%  {height: 80px; transform: translateY(200px);}
+		55%  {height: 40px; transform: translateY(200px);}
+		60%  {height: 80px; transform: translateY(160px);}
+		65%  {height: 40px; transform: translateY(160px);}
+		70%  {height: 80px; transform: translateY(120px);}
+		75%  {height: 40px; transform: translateY(120px);}
+		80%  {height: 80px; transform: translateY(80px);}
+		85%  {height: 40px; transform: translateY(80px);}
+		90%  {height: 80px; transform: translateY(40px);}
+		95%  {height: 40px; transform: translateY(40px);}
+		100% {height: 80px; transform: translateY(0px);}
+	}
+	@-webkit-keyframes crawl{
+		2%,6%,10% {-webkit-transform: translateY(310px);}
+		4%,8% {-webkit-transform: translateY(340px);}
+		11%  {-webkit-transform: translateY(320px);}
+		20%  {height: 80px; -webkit-transform: translateY(320px);}
+		25%  {height: 40px; -webkit-transform: translateY(320px);}
+		30%  {height: 80px; -webkit-transform: translateY(280px);}
+		35%  {height: 40px; -webkit-transform: translateY(280px);}
+		40%  {height: 80px; -webkit-transform: translateY(240px);}
+		45%  {height: 40px; -webkit-transform: translateY(240px);}
+		50%  {height: 80px; -webkit-transform: translateY(200px);}
+		55%  {height: 40px; -webkit-transform: translateY(200px);}
+		60%  {height: 80px; -webkit-transform: translateY(160px);}
+		65%  {height: 40px; -webkit-transform: translateY(160px);}
+		70%  {height: 80px; -webkit-transform: translateY(120px);}
+		75%  {height: 40px; -webkit-transform: translateY(120px);}
+		80%  {height: 80px; -webkit-transform: translateY(80px);}
+		85%  {height: 40px; -webkit-transform: translateY(80px);}
+		90%  {height: 80px; -webkit-transform: translateY(40px);}
+		95%  {height: 40px; -webkit-transform: translateY(40px);}
+		100% {height: 80px; -webkit-transform: translateY(0px);}
+	}
+
+	@keyframes stretch{
+		30%  {height: 2000px; transform: translateY(0);}
+		50%  {height: 80px; transform: translateY(2000px);}
+		70%  {transform: translateY(2000px);}
+		80%  {transform: translateY(-120px);}
+		85%  {transform: translateY(80px);}
+		90%  {transform: translateY(-40px);}
+		94%  {transform: translateY(20px);}
+		96%  {transform: translateY(-10px);}
+		98%  {transform: translateY(5px);}
+		100% {transform: translateY(0px);}
+	}
+	@-webkit-keyframes stretch{
+		30%  {height: 2000px; -webkit-transform: translateY(0);}
+		50%  {height: 80px; -webkit-transform: translateY(2000px);}
+		70%  {-webkit-transform: translateY(2000px);}
+		80%  {-webkit-transform: translateY(-120px);}
+		85%  {-webkit-transform: translateY(80px);}
+		90%  {-webkit-transform: translateY(-40px);}
+		94%  {-webkit-transform: translateY(20px);}
+		96%  {-webkit-transform: translateY(-10px);}
+		98%  {-webkit-transform: translateY(5px);}
+		100% {-webkit-transform: translateY(0px);}
 	}
 	</style>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$('.box').on('click', function () {
+			var it = $(this),
+				animations = ['dangle', 'diminish', 'largen', 'crawl', 'stretch'],
+				index = Math.floor(Math.random() * (animations.length + 1));
+
+			it.addClass(animations[index]);
+			setTimeout(function () {
+				it.removeClass(animations[index]);
+			}, 5000);
+		});
+	});
+	</script>
 </head>
 <body>
-	<div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box dangle"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box jump"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div>
+	<div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div><div class="sty1 box"></div><div class="sty2 box"></div><div class="sty3 box"></div><div class="sty4 box"></div><div class="sty5 box"></div>
 
 	<script type="text/javascript" src="js/analytics.js"></script>
 </body>
