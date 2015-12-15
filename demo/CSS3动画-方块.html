@@ -16,6 +16,7 @@
 		position: relative;
 		display: inline-block;
 		vertical-align: top;	/* 影响高度变化时的动画效果 */
+		cursor: pointer;
 	}
 	.box:hover{
 		z-index: 1;
@@ -71,7 +72,7 @@
 		42%  {transform: translate(120px, 510px);}
 		50%  {transform: translate(200px, 730px);}
 		52%  {transform: translate(200px, 690px);}
-		55%  {transform: translate(200px, 1200px) rotateY(1800deg);}
+		55%  {transform: translate(200px, 2000px) rotateY(1800deg);}
 	}
 	@-webkit-keyframes dangle{
 		0%,10% {-webkit-transform-origin: top left; -webkit-transform: rotate(45deg);}
@@ -190,16 +191,24 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(function () {
-		$('.box').on('click', function () {
-			var it = $(this),
-				animations = ['dangle', 'diminish', 'largen', 'crawl', 'stretch'],
-				index = Math.floor(Math.random() * (animations.length + 1));
+		var animations = ['dangle', 'diminish', 'largen', 'crawl', 'stretch'];
 
-			it.addClass(animations[index]);
-			setTimeout(function () {
-				it.removeClass(animations[index]);
-			}, 5000);
-		});
+		$('.box').each(function() {
+			var count = 0;
+			$(this).on('click', function () {
+				count ++;
+				if(count == 1) {
+					var it = $(this),
+						index = Math.floor(Math.random() * (animations.length + 1));
+
+					it.addClass(animations[index]);
+					setTimeout(function () {
+						it.removeClass(animations[index]);
+						count = 0;
+					}, 5000);	
+				}
+			});
+		});			
 	});
 	</script>
 </head>
