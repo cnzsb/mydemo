@@ -1,6 +1,7 @@
-// 简单判断质数的方法，此方法未优化，不可判断太大的数据
+// 简单判断素数的方法，此方法未优化，不可判断太大的数据
 // 包含a和b且都为整数，且a>1
-function primes(a, b){
+
+function prime(a, b){
 	var now  = [];
   	  	not = [];
   	
@@ -48,10 +49,10 @@ function isPrime(a){
         for(var i = 2; i <= a/2; i++){
             if(a % i == 0){
                 arr.push(i);
-            }
         }
-        return arr.length ? false : true;
-    } else {
+    }    
+    return arr.length ? false : true;
+        } else {
         return false;
     }
 };
