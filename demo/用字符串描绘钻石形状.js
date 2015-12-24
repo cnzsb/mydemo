@@ -62,8 +62,16 @@ function _diamond(n){
 // 方法二
 function diamond(n) {
 	var spaces = 0,
-		lines,
-		diam = spaces + lines;
+		sides = '',
+		diam = lines(spaces, n);
+
+	while (spaces < n) {
+		spaces += 2;
+		sides = lines(spaces / 2, n - spaces);
+		diam = sides + diam + sides;
+	}
+
+	return diam;
 }
 
 function strArr(str, num) {
