@@ -5,18 +5,30 @@
 	<title>Mondrian | cnzsb</title>
 	<link rel="shortcut icon" href="../images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="../css/reset.css">
-	<style type="text/css">
-	/*css reset*/
-	body, h1, ul, li{
-		margin: 0; padding: 0;
-	}
-	ul, li{
-		list-style: none;
-	}
-
+	<style type="text/css">	
 	body{
 		background-color: #9C9C9C;
 	}
+
+	#header {
+		position: fixed;
+		background-color: #3A3636;
+		width: 75px;
+		height: 80px;
+		top: 141px;
+		left: 50%;
+		margin-left: -494px;
+		text-align: center;
+		border-radius: 20px;
+		padding-top: 10px;
+	}
+	#header a {
+		font-size: 20px;
+		line-height: 35px;
+		color: #FFFFE0;
+		font-weight: bold;
+	}
+
 	#container{
 		width: 800px;
 		margin: 50px auto;
@@ -163,6 +175,10 @@
 	</script> -->
 </head>
 <body>
+	<div id="header">
+		<a href="http://www.zhaoshibo.net/mydemo">Home</a>
+		<a href="http://www.zhaoshibo.net">Blog</a>
+	</div>
 	<h1 class="title">Pick a color and paint the canvas</h1>
 	<div id="container">
 		<ul id="color">
