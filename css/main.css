@@ -55,6 +55,15 @@ body {	background-color: #E9FCFF;}
 	font-weight: bold;
 }
 
+.especial {
+	display: block;
+	float: right;
+	margin-right: 4%;
+	font-size: 12px;
+	text-align: right;
+	padding-top: 10px;
+	border-bottom: 1px solid #0490A5;
+}
 #content {
 	width: 90%;
 	margin: 0 auto;	
