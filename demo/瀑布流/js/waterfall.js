@@ -21,7 +21,8 @@ window.onload = function () {
 			box = container.querySelectorAll('.box'),
 			lastBox = box[box.length - 1],
 			lastBoxTop = lastBox.offsetHeight / 4 + lastBox.offsetTop,		// 盒子自身高度的1/4 + 到父容器顶部距离
-			viewTop = document.documentElement.clientHeight + document.documentElement.scrollTop;		// 视窗高 + 滚动距离
+			scrTop = document.documentElement.scrollTop || document.body.scrollTop,		// body兼容手机端
+			viewTop = document.documentElement.clientHeight + scrTop;		// 视窗高 + 滚动距离
 
 		if(lastBoxTop < viewTop) {
 			var dataLen = dataInt.data.length;
