@@ -12,7 +12,7 @@ window.onload = function () {
 		waterfall('#container', '.box');
 	};
 
-	// 模拟服务器发挥的数据
+	// 模拟服务器发回的数据
 	var dataInt = {'data':[{'src':'07.jpg'},{'src':'06.jpg'},{'src':'05.jpg'},{'src':'04.jpg'},{'src':'03.jpg'},{'src':'02.jpg'},{'src':'01.jpg'}]};
 
 	// 滚动时判断是否需要加载服务器发回的更多图片
