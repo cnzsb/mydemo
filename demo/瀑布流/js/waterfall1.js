@@ -48,29 +48,29 @@ window.onload = function () {
 function waterfall(parent, son) {
 	var container = document.querySelector(parent),
 		box = container.querySelectorAll(son),
-		picW = box[0].offsetWidth,		// 单个图片容器宽度
-		cols = Math.floor(document.documentElement.clientWidth / picW),		// 当前视窗下可容纳列数
-		aPicH = [];
+		BoxW = box[0].offsetWidth,		// 单个图片容器宽度
+		cols = Math.floor(document.documentElement.clientWidth / BoxW),		// 当前视窗下可容纳列数
+		aBoxH = [];
 
 	// 设置父容器宽度及居中
-	container.style.cssText = 'width:' + picW * cols + 'px; margin-left: auto; margin-right: auto;';
+	container.style.cssText = 'width:' + BoxW * cols + 'px; margin-left: auto; margin-right: auto;';
 
 	for (var i = 0; i < box.length; i++) {
 		if (i < cols) {
 			// 动态改变窗口时先清除定位
 			box[i].style.position = '';
 			// 存取首行每个盒子的高度
-			aPicH[i] = box[i].offsetHeight;
+			aBoxH[i] = box[i].offsetHeight;
 		} else {
 			// 获取最小的高度及其索引
-			var aPicMinH = Math.min.apply(null, aPicH),
-				aPicMinIndex = inArray(aPicMinH, aPicH);
+			var aBoxMinH = Math.min.apply(null, aBoxH),
+				aBoxMinIndex = inArray(aBoxMinH, aBoxH);
 			box[i].style.position = 'absolute';
-			box[i].style.top = aPicMinH + 'px';
-			box[i].style.left = box[aPicMinIndex].offsetLeft + 'px';
+			box[i].style.top = aBoxMinH + 'px';
+			box[i].style.left = box[aBoxMinIndex].offsetLeft + 'px';
 
 			// 改变数组中的最小高度
-			aPicH[aPicMinIndex] += box[i].offsetHeight;
+			aBoxH[aBoxMinIndex] += box[i].offsetHeight;
 		}
 	}
 }
