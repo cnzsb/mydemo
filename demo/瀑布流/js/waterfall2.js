@@ -86,7 +86,6 @@ function randomPlace(parent, son) {
 	$box.css('position', 'absolute')
 		.each(function () {
 			var $this = $(this);
-			console.log($this.outerHeight());
 			$this.css({
 				'top': ($(window).height() - $this.outerHeight()) / 2,
 				'left': ($(window).width() - $this.outerWidth()) / 2,
