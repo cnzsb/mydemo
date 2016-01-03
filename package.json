@@ -1,0 +1,33 @@
+{
+  "name": "mydemo",
+  "version": "1.0.0",
+  "description": "daily demos",
+  "main": "index.html",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.10.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.1",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-ruby-sass": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnzsb/mydemo.git"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "cnzsb",
+  "license": "The BSD 3-Clause License",
+  "bugs": {
+    "url": "https://github.com/cnzsb/mydemo/issues"
+  },
+  "homepage": "https://github.com/cnzsb/mydemo#readme"
+}
