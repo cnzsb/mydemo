@@ -11,34 +11,20 @@
         background-color: #f5f5f5;
     }
 
-    .clearfix::before, .clearfix::after {
-    	content: '';
-    	display: table;
-    }
-	.clearfix::after {
-		clear: both;
-		overflow: hidden;
-	}    
-
-    /*居中*/    
+    /*居中*/
     .nav-menu {
-        position: absolute;
         display: block;
-        margin-top: 100px;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        transform: translateX(-50%);
-    }    
+        width: 650px;
+        margin: 50px auto 0;
+    }
     .nav-menu > li {
-        display: inline;
-        float: left;
         border-right: 1px solid #ccc;
-        position: relative;
-    }    
-    .nav-menu>li:last-child {
+        position: relative;        
+        float: left;
+    }
+    .nav-menu > li:last-child {
         border-right: none;
-    }    
+    }
     .nav-menu li a {
         display: block;
         padding: 10px 30px;
@@ -141,8 +127,8 @@
 
 <body>
 	<!-- Not For IE -->
-    <header class="nav">
-        <ul class="nav-menu clearfix unstyled">
+    <header>
+        <ul class="nav-menu clearfix">
             <li>
                 <a href="/mydemo" class="three-d active">
 					Home

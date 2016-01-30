@@ -19,6 +19,27 @@ th, td { /* table elements 表格元素 */
 ul, ol {
 	list-style: none;
 }
+/* 清除浮动 */
+.clearfix::before, .clearfix::after {
+    content: '';
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+    overflow: hidden;
+}
+/* ie6/7 */
+.clearfix {
+    *zoom: 1;
+}
+.clear {
+    clear: both;
+    display: block;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
 /* 设置默认鼠标样式*/
 html {
 	cursor: url(../images/cursor.ico), auto;
