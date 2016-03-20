@@ -1,22 +1,35 @@
 @charset "UTF-8";
 /**
- * 
  * @authors cnzsb
+ * @email   cnzsb@foxmail.com
  * @date    2015-12-02 15:10:22
  */
 
 body {	background-color: #E9FCFF;}
 
+/* 鼠标选择颜色 */
+::selection {
+    color: #FFF;
+    background-color: #19caad;
+}
+::-moz-selection {
+    color: #FFF;
+    background-color: #19caad;
 
 #header {
+	height: 25px;
 	text-align: right;
 	padding: 5px;
 	border-bottom: 1px solid #ccc;
 }
 #header a {
 	font-size: 24px;
-	padding-right: 20px;
+	line-height: 25px;
+	padding: 0 10px;
 	color: #09A8FF;
+}
+#header a:hover {
+	border-bottom: 2px solid #09A8FF;
 }
 
 #top {
