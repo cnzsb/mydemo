@@ -15,6 +15,7 @@ body {	background-color: #E9FCFF;}
 ::-moz-selection {
     color: #FFF;
     background-color: #19caad;
+}
 
 #header {
 	height: 25px;
