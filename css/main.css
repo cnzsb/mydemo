@@ -22,7 +22,7 @@ body {	background-color: #E9FCFF;}
 #top {
 	width: 90%;
 	margin: 0 auto;
-	padding: 50px;
+	padding: 20px;
 	font-size: 20px;
 }
 #top .avatar {
@@ -32,7 +32,8 @@ body {	background-color: #E9FCFF;}
 	background: url('../images/avatar.jpg') 0 0 no-repeat;
 	float: right;
 }
-#top .highlight {
+/* 高亮元素样式 */
+.highlight {
 	font-size: 24px;
 	font-weight: bold;
 	color: #19caad;
@@ -48,6 +49,10 @@ body {	background-color: #E9FCFF;}
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	text-align: center;
+	font-size: 24px;
+}
+#middle h2 {
+	font-weight: normal;
 	font-size: 24px;
 }
 #newest {
@@ -75,3 +80,24 @@ body {	background-color: #E9FCFF;}
 #content a:visited {
 	color: #0490A5;
 }
+
+/* 新增.ife 2016.3.20*/
+/* ife start */
+.ife {
+	width: 90%;
+	margin: 0 auto;
+	padding: 20px;
+	border-top: 1px solid #ccc;
+	line-height: 30px;
+}
+
+.ife h2 {
+	font-weight: normal;
+	color: #F64848;
+	line-height: 40px;
+}
+
+.ife .ife-date {
+	font-size: 12px;
+}
+/* ife end */
