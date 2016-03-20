@@ -61,16 +61,17 @@ function _diamond(n){
 
 // 方法二
 function diamond(n) {
+	if(n < 0 || n % 2 == 0) {
+		return null;
+	}
 	var spaces = 0,
 		sides = '',
 		diam = lines(spaces, n);
-
 	while (spaces < n) {
 		spaces += 2;
 		sides = lines(spaces / 2, n - spaces);
 		diam = sides + diam + sides;
 	}
-
 	return diam;
 }
 
