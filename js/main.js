@@ -17,6 +17,9 @@ $(function () {
 			// console.log($demoname);
 			// $num = $num < 10 ? '&nbsp;&nbsp;' + $num : $num;
 
+			// 给当前demo添加新窗口打开
+			$this.attr('target', '_blank');
+
 			// 筛选文件夹类的项目
 			var r = new RegExp('(^.*)\\/(.*$)'),
 				isFile = r.exec($demoname);
