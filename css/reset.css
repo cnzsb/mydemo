@@ -54,6 +54,15 @@ a img {
 	border: none;
 }
 body, a {
-	font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+	font-family: "Century Gothic",CenturyGothic,AppleGothic,"Microsoft YaHei",sans-serif;
 	letter-spacing: 2px;
 }
+
+/* 鼠标选择颜色 */
+::selection {
+    color: #FFF;
+    background-color: #19caad;
+}
+::-moz-selection {
+    color: #FFF;
+    background-color: #19caad;
