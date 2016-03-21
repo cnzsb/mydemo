@@ -80,18 +80,17 @@ body {	background-color: #E9FCFF;}
 }
 
 .especial {
-	display: block;
-	float: right;
-	margin-right: 4%;
-	font-size: 12px;
+	padding: 5px 4%;
 	text-align: right;
-	padding-top: 10px;
-	border-bottom: 1px solid #0490A5;
 }
+.especial a {
+	font-size: 12px;
+	text-decoration: underline;
+}
+
 #content {
 	width: 90%;
 	margin: 0 auto;	
-	padding: 35px;
 }
 #content a {
 	line-height: 30px;
@@ -202,10 +201,4 @@ body {	background-color: #E9FCFF;}
 		text-align: right;
 	}
 	/* ife end */
-
-	/* content start */
-	#content {
-		padding: 35px 5px;
-	}
-	/* content end */
 }
