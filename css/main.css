@@ -33,17 +33,22 @@ body {	background-color: #E9FCFF;}
 	border-bottom: 2px solid #09A8FF;
 }
 
+#header-m {
+	display: none;
+}
+
 #top {
 	width: 90%;
 	margin: 0 auto;
 	padding: 20px;
 	font-size: 20px;
 }
-#top .avatar {
+.avatar {
 	display: block;
-	width: 50px;
-	height: 50px;
-	background: url('../images/avatar.jpg') 0 0 no-repeat;
+	width: 100px;
+	height: 100px;
+	background: url('http://www.zhaoshibo.net/avatar.jpg') center center no-repeat;
+	background-size: 100px 100px;
 	float: right;
 }
 /* 高亮元素样式 */
@@ -52,7 +57,7 @@ body {	background-color: #E9FCFF;}
 	font-weight: bold;
 	color: #19caad;
 }
-#top h2.highlight {
+#top h2 {
 	font-size: 70px;
 }
 
@@ -115,3 +120,92 @@ body {	background-color: #E9FCFF;}
 	font-size: 12px;
 }
 /* ife end */
+
+
+/* 移动端 */
+@media screen and (max-width: 768px) {
+	/* header start */
+	#header {
+		display: none;
+	}
+	#header-m {
+		display: block;
+		padding-top: 20px;
+		border-bottom: 2px solid #ccc;
+	}
+	#header-m .avatar-m {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		margin: 0 auto;
+		background: url(http://www.zhaoshibo.net/avatar.jpg) center center no-repeat;
+		background-size: 100px 100px;
+	}
+	#header-m .nav-m {
+		padding-top: 20px;
+		text-align: center;
+	}
+
+	#header-m .nav-m li {
+		display: inline-block;
+	}
+
+	#header-m .nav-m li a {
+		font-size: 18px;
+		padding: 0 8px;
+		line-height: 1.8em;
+	}
+	/* header end */
+
+
+	#top {
+		font-size: 16px;
+		line-height: 1.8em;
+		padding: 0 5px;
+	}
+	.avatar {
+		display: none;
+	}
+
+	/* 高亮元素样式 */
+	.highlighter {
+		font-size: 22px;
+		line-height: 1.1em;
+	}
+
+	#top h2 {
+		font-size: 40px;
+		line-height: 1.2em;
+	}
+	#top p {
+		display: inline;
+	}
+
+	/* ife start */
+	.ife {
+		font-size: 16px;
+		padding: 0 5px;
+		line-height: 1.8em;
+	}
+
+	.ife h2 {
+		font-size: 24px;
+		line-height: 2em;
+	}
+
+	.ife p {
+		display: inline;
+	}
+
+	.ife .ife-date {
+		display: block;
+		text-align: right;
+	}
+	/* ife end */
+
+	/* content start */
+	#content {
+		padding: 35px 5px;
+	}
+	/* content end */
+}
