@@ -76,9 +76,16 @@
             // 动态获取当前身上金额，并且重置当前买到的啤酒数量（nowBeer）
             var nowMoney = money.value;
             nowBeer = parseInt(nowMoney / 2);
-            
-            result.innerHTML = "现在有" + nowMoney + "块钱，可以买" + nowBeer + "瓶啤酒<br><br>";
-            beers(nowBeer, nowBeer, nowBeer);
+            if (/^[0-9]*$/.test(nowMoney) && nowMoney > 0) {
+                result.innerHTML = "现在有" + nowMoney + "块钱，可以买" + nowBeer + "瓶啤酒<br><br>";
+                beers(nowBeer, nowBeer, nowBeer);
+            }
+            else if (nowMoney == 0 || nowMoney === '') {
+                result.innerHTML = "小婊砸，没钱还出来混，快去搬砖吧！";
+            }
+            else {
+                result.innerHTML = "痴心妄想的小婊砸，不要用不明所以的金币糊弄我！";
+            }
         };
     })();
     </script>
