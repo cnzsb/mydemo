@@ -14,13 +14,16 @@ body {
 
 #header {
 	position: fixed;
-	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
 	padding-left: 20px;
 	background-color: #FFA478;
 
 	> a {
 		color: #fff;
 		font-size: 26px;
+		line-height: 26px;
 		font-weight: bold;
 		padding: 10px;
 		display: inline-block;
@@ -29,6 +32,11 @@ body {
 			color: #FF4747;
 		}
 	}
+}
+
+.sth {
+	margin-top: 70px;
+	padding-left: 30%;
 }
 
 .toolbar {
