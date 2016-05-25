@@ -90,7 +90,7 @@
 			},
 			extractCode: function (str, isStyle) {
 				var cata = isStyle ? 'style' : 'script',
-					scriptFragment = '<' + cata + '[^>]*>([\\S\\s]*?)</' + cata + '\\s',
+					scriptFragment = '<' + cata + '[^>]*>([\\S\\s]*?)</' + cata + '\\s*>',		// 匹配style或script中的代码块
 					matchAll = new RegExp(scriptFragment, 'img'),
 					matchOne = new RegExp(scriptFragment, 'im'),
 					matchResults = str.match(matchAll) || [],
@@ -104,7 +104,11 @@
 				}
 
 				return ret;
+			},
+			decodeHTML: function(str) {
+				return str.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');	// 替换html代码中转义的'<>&'符号
 			}
+
 		}
 	};
 })(window, document)
