@@ -56,7 +56,7 @@
 				bd = doc.body;
 			return Math.max(win.pageYOffset || 0, html.scrollTop, bd.scrollTop);
 		},
-		getEleSize = function (ele) {
+		getEleSize: function (ele) {
 			return {
 				width: ele.offsetWidth,
 				height: ele.offsetHeight
@@ -133,10 +133,10 @@
 				}
 			},
 			inView: function (ele) {
-				var top = T.getPos(ele).y,
-					viewVal = T.getViewport().height,
-					scrollVal = T.getScrollHeight(),
-					eleHeight = T.getEleSize(ele).height;
+				var top = LazyRender.getPos(ele).y,
+					viewVal = LazyRender.getViewport().height,
+					scrollVal = LazyRender.getScrollHeight(),
+					eleHeight = LazyRender.getEleSize(ele).height;
 
 				if (top >= scrollVal - eleHeight - this.threshold && top <= scrollVal + viewVal + this.threshold) {
 					return true;
@@ -157,7 +157,8 @@
 				for (var i = this.eles.length; i--; ) {
 					var ele = this.eles[i];
 
-					if (!this.inView(ele)) continue;
+					if (!this.inView(ele))
+						continue;
 
 					this.insert(ele);
 					this.eles.splice(i, 1);
@@ -178,5 +179,5 @@
 		}
 	};
 
-	window['LazyRender'] = LazyRender;
+	win['LazyRender'] = LazyRender;
 })(window, document)
