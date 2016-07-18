@@ -105,10 +105,78 @@
 
 				return ret;
 			},
-			decodeHTML: function(str) {
+			decodeHTML: function (str) {
 				return str.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');	// 替换html代码中转义的'<>&'符号
-			}
+			},
+			insert: function (ele) {
+				var parent = ele.parentNode,
+					txt = this.decodeHTML(ele.innerHTML),
+					matchStyles = this.extractCode(txt, true),
+					matchScripts = this.extractCode(txt);
 
+				parent.innerHTML = txt.replace(new RegExp('<script[^>]*>([\\S\\s]*?)</script\\s*>', 'img'), '')
+									.replace(new RegExp('<style[^>]*>([\\S\\s]*?)</style\\s*>', 'img'), '');
+
+				if (matchStyles.length) {
+					for (var i = matchStyles.length; i--; ) {	// i此时会等于matchStyles.length - 1; 并且在等于0的时候停止循环
+						this.evalStyles(matchStyles[i]);
+					}
+				}
+
+				// 延迟时可设置loading效果
+				parent.className = parent.className.replace('loading', '');
+
+				if (matchScripts.length) {
+					for (var i = 0, len = matchScripts.length; i < len; i++) {
+						this.evalScripts(matchScripts[i]);
+					}
+				}
+			},
+			inView: function (ele) {
+				var top = T.getPos(ele).y,
+					viewVal = T.getViewport().height,
+					scrollVal = T.getScrollHeight(),
+					eleHeight = T.getEleSize(ele).height;
+
+				if (top >= scrollVal - eleHeight - this.threshold && top <= scrollVal + viewVal + this.threshold) {
+					return true;
+				}
+
+				return false;
+			},
+			pollTextareas: function () {
+				// 若延迟加载元素全部加载完
+				if (!this.eles.length) {
+					LazyRender.removeEvent(win, 'scroll', this.fn);
+					LazyRender.removeEvent(win, 'resize', this.fn);
+					LazyRender.removeEvent(doc.body, 'touchMove', this.fn);
+					return;
+				}
+
+				// 判断是否需要加载
+				for (var i = this.eles.length; i--; ) {
+					var ele = this.eles[i];
+
+					if (!this.inView(ele)) continue;
+
+					this.insert(ele);
+					this.eles.splice(i, 1);
+				}
+			},
+			init: function (config) {
+				var cls = config.cls;
+				this.threshold = config.threshold || 0;
+
+				this.eles = Array.prototype.slice.call(LazyRender.getElementsByClassName(cls));
+				this.fn = this.pollTextareas.bind(this);
+
+				this.fn();
+				LazyRender.addEvent(win, 'scroll', this.fn);
+				LazyRender.addEvent(win, 'resize', this.fn);
+				LazyRender.addEvent(doc.body, 'touchMove', this.fn);
+			}
 		}
 	};
+
+	window['LazyRender'] = LazyRender;
 })(window, document)
