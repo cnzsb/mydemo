@@ -24,10 +24,11 @@ $(function () {
 
 			if (hasName) {
 				$this.html(num + demoname + '<br />');
-				$newest.attr('href', $this.attr('href'))
-					.html(demoname);
-
-				return;
+				if (i === 0) {
+					$newest.attr('href', $this.attr('href'))
+						.html(demoname);
+				}
+				return
 			}
 
 			// 筛选文件夹类的项目
@@ -40,7 +41,7 @@ $(function () {
 			$this.html(num + demoname + '<br />');
 
 			// 最近的Demo
-			if (i == 0) {
+			if (i === 0) {
 				$newest.attr('href', reg.exec($this.attr('href'))[0])
 					.html(demoname);
 			}
