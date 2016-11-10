@@ -1,3 +1,11 @@
+/**
+ * Created by cnzsb on 2016/11/10.
+ * @param val       待处理数值
+ * @param pointer   dom对象或者某个指针
+ * @param target    pointer对应的需改变的属性
+ * @param conf      配置：{interval（每位数的间隔变换时间，ms），speed（单个数字变化时间，ms），fill（等待时填充字符，如0），direction（从头或者尾开始变换）}
+ * @method run
+ */
 function NumCounter(val, pointer, target, conf) {
     this._origin = {
         pointer,
